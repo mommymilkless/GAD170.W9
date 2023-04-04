@@ -18,14 +18,19 @@ public class TriggerDetection : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-        if(collision.gameObject.name=="Player")
-        {
-            Debug.Log("Wowee");
-        }
+        
     }
 
     void OnTriggerStay(Collider collision)
     {
-
+        if(collision.gameObject.name=="Player")
+        {
+            Debug.Log("Wowee");
+        }
+        else
+        {
+            Debug.Log("You are not the player. Die");
+            collision.gameObject.GetComponent<Rigidbody>().AddForce(collision.gameObject.transform.up*100);
+        }
     }
 }
